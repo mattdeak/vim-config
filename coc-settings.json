@@ -1,0 +1,6 @@
+{
+  "python.jediEnabled": false,
+  "suggest.enablePreview": true,
+  "coc.preferences.hoverTarget": "echo",
+  "signature.target": "echo"
+}
