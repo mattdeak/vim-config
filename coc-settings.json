@@ -1,6 +1,5 @@
 {
   "python.jediEnabled": false,
-  "suggest.enablePreview": true,
-  "coc.preferences.hoverTarget": "echo",
-  "signature.target": "echo"
+  "python.linting.pylintArgs": ["--extension-pkg-whitelist=cv2"],
+  "suggest.enablePreview": true
 }
