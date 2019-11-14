@@ -2,9 +2,10 @@ set nocompatible
 set rnu
 set nu
 set hidden
+set showcmd
+set foldmethod=indent
 
 let mapleader = " "
-set showcmd
 
 syntax on
 set bg=dark
@@ -22,14 +23,23 @@ Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': 'yarn install'}
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-surround', {'branch': 'master'}
 Plug 'tpope/vim-repeat', {'branch': 'master'}
+Plug 'tpope/vim-commentary'
 Plug 'scrooloose/nerdtree', {'branch': 'master'}
 Plug 'tpope/vim-fugitive', {'branch': 'master'}
 Plug 'christoomey/vim-tmux-navigator', {'branch': 'master'}
 Plug 'morhetz/gruvbox'
 Plug 'janko-m/vim-test'
 Plug 'iamcco/markdown-preview.nvim', {'do' : { ->  mkdp#util#install()}}
+Plug 'lervag/vimtex'
+Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'npm install',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+Plug 'psf/black'
 call plug#end()
 
+" Python Interpreter
+let g:python3_host_prog = '~/miniconda3/envs/nvim/bin/python'
 
 filetype plugin on
 
@@ -84,8 +94,8 @@ let g:ctrlp_custom_ignore = {
   \ 'link': 'some_bad_symbolic_links',
   \ }
 
-let g:UltiSnipsExpandTrigger="<tab>"
 " Snippets
+let g:UltiSnipsExpandTrigger="<tab>"
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? coc#_select_confirm() :
       \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
@@ -96,4 +106,3 @@ function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
-

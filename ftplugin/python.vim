@@ -7,6 +7,7 @@ setlocal expandtab
 setlocal autoindent
 setlocal smarttab
 setlocal formatoptions=croql
+setlocal foldnestmax=2
 
 " Allows quick debugging
 function! DebugNearest()
@@ -18,3 +19,7 @@ function! DebugNearest()
 endfunction
 
 nmap <silent> t<C-d> :call DebugNearest()<CR>
+
+" Black: Run on Autosave and on Leader+P
+autocmd BufWritePre *.py execute :Black
+nnoremap <Leader>p :Black<CR>
