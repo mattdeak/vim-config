@@ -21,5 +21,5 @@ endfunction
 nmap <silent> t<C-d> :call DebugNearest()<CR>
 
 " Black: Run on Autosave and on Leader+P
-autocmd BufWritePre *.py execute :Black
+autocmd BufWritePre *.py execute ':Black'
 nnoremap <Leader>p :Black<CR>

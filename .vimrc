@@ -36,6 +36,8 @@ Plug 'prettier/vim-prettier', {
   \ 'do': 'npm install',
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 Plug 'psf/black'
+Plug 'tranvansang/vim-close-pair'
+Plug 'jpalardy/vim-slime'
 call plug#end()
 
 " Python Interpreter
@@ -106,3 +108,8 @@ function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
+
+" Slime
+if exists('$TMUX')
+	let g:slime_target = "tmux"
+endif
