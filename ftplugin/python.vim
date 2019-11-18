@@ -25,4 +25,4 @@ autocmd BufWritePre *.py execute ':Black'
 nnoremap <Leader>p :Black<CR>
 
 " Vim-Slime: Automatically run file in jupyter console or ipython
-nnoremap <Leader>r :execute 'SlimeSend1 %run' expand('%')<CR>
+nnoremap <Leader>r :execute 'SlimeSend1 %run' expand('%:p')<CR>
