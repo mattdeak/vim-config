@@ -24,5 +24,5 @@ nmap <silent> t<C-d> :call DebugNearest()<CR>
 autocmd BufWritePre *.py execute ':Black'
 nnoremap <Leader>p :Black<CR>
 
-" Vim-Slime: Automatically run file in jupyter console or ipython
-nnoremap <Leader>r :execute 'SlimeSend1 %run' expand('%:p')<CR>
+" Vim-Slime: Automatically save then run file in jupyter console or ipython
+nnoremap <Leader>r :w<CR> :execute 'SlimeSend1 %run' expand('%:p')<CR>
