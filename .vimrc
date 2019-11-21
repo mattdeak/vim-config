@@ -1,10 +1,35 @@
 set nocompatible
+set hidden
+" Filetype
+filetype plugin indent on
+syntax on " Still don't really understand this one
+
+" Display
 set rnu
 set nu
-set hidden
 set showcmd
+set bg=dark
+set ruler
+
+" Text Rendering
+set encoding=utf-8 " For funny characters
+set linebreak
+
+" Indentation
+set autoindent
+set expandtab
+set shiftwidth=4
+set smarttab
+set tabstop=4
+
+" Folding
 set foldmethod=indent
-filetype plugin on
+set foldnestmax=3
+set history=100
+
+" Search
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 
 " MAPPINGS
 nnoremap <C-h> <C-w>h
@@ -24,7 +49,6 @@ set ignorecase
 set smartcase
 nnoremap <CR> :noh<CR>
 
-syntax on
 " Plug vim: plugin manager
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -89,7 +113,6 @@ noremap <Left> <Nop>
 noremap <Right> <Nop>
 
 " Colors
-set bg=dark
 set t_Co=256
 colorscheme gruvbox
 
@@ -102,8 +125,6 @@ let g:crtlp_map = '<C-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
-set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_custom_ignore = {
@@ -130,3 +151,8 @@ if exists('$TMUX')
 	let g:slime_target = "tmux"
 	let g:slime_default_config = {"socket_name": "default", "target_pane": "{right-of}"}
 endif
+
+" PyDocString
+nnoremap <C-i> :Pydocstring<CR>
+let g:pydocstring_templates_dir = '~/.vim/bundle/vim-pydocstring/test/templates/numpy'
+let g:pydocstring_enable_comment = 0
