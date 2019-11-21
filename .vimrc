@@ -4,11 +4,27 @@ set nu
 set hidden
 set showcmd
 set foldmethod=indent
+filetype plugin on
+
+" MAPPINGS
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
 let mapleader = " "
+nnoremap <leader>w :w<CR>
+
+" Search
+nnoremap / /\v
+vnoremap / /\v
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+nnoremap <CR> :noh<CR>
 
 syntax on
-set bg=dark
 " Plug vim: plugin manager
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -38,27 +54,26 @@ Plug 'prettier/vim-prettier', {
 Plug 'psf/black'
 Plug 'tranvansang/vim-close-pair'
 Plug 'jpalardy/vim-slime'
+Plug 'heavenshell/vim-pydocstring'
+
 call plug#end()
 
 " Python Interpreter
 let g:python3_host_prog = '~/miniconda3/envs/nvim/bin/python'
 
-filetype plugin on
+" -------------------------------------------
+" -------- End of non-plugin related settings 
+" ------------------------------------------- 
 
-" MAPPINGS
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
+if empty(glob("~/.vim/bundle"))
+  echo "Please run :PlugInstall for plugin functionality"
+  exit
+endif
 
-" Search
-nnoremap / /\v
-vnoremap / /\v
-set hlsearch
-set incsearch
-set ignorecase
-set smartcase
-nnoremap <CR> :noh<CR>
+" ------------------------------------------- 
+" -------- Start of plugin related settings 
+" ------------------------------------------- 
+
 
 " Vim Test
 nmap <silent> t<C-n> :TestNearest<CR>
@@ -74,6 +89,7 @@ noremap <Left> <Nop>
 noremap <Right> <Nop>
 
 " Colors
+set bg=dark
 set t_Co=256
 colorscheme gruvbox
 
@@ -112,4 +128,5 @@ endfunction
 " Slime
 if exists('$TMUX')
 	let g:slime_target = "tmux"
+	let g:slime_default_config = {"socket_name": "default", "target_pane": "{right-of}"}
 endif
