@@ -1,5 +1,6 @@
 {
   "python.jediEnabled": false,
   "python.linting.pylintArgs": ["--extension-pkg-whitelist=cv2"],
-  "suggest.enablePreview": true
+  "suggest.enablePreview": true,
+  "python.autoComplete.addBrackets": true
 }

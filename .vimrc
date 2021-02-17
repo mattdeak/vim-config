@@ -3,7 +3,7 @@ set hidden
 " Filetype
 filetype plugin indent on
 syntax on " Still don't really understand this one
-
+set timeoutlen=500
 " Display
 set rnu
 set nu
@@ -78,7 +78,7 @@ Plug 'prettier/vim-prettier', {
 Plug 'psf/black'
 Plug 'tranvansang/vim-close-pair'
 Plug 'jpalardy/vim-slime'
-Plug 'heavenshell/vim-pydocstring'
+Plug 'heavenshell/vim-pydocstring', {'do': 'make install'}
 
 call plug#end()
 
@@ -151,8 +151,10 @@ if exists('$TMUX')
 	let g:slime_target = "tmux"
 	let g:slime_default_config = {"socket_name": "default", "target_pane": "{right-of}"}
 endif
+let g:slime_python_ipython = 1
 
 " PyDocString
-nnoremap <C-i> :Pydocstring<CR>
-let g:pydocstring_templates_dir = '~/.vim/bundle/vim-pydocstring/test/templates/numpy'
+nmap <silent> <leader>i <Plug>(pydocstring)
+let g:pydocstring_formatter = 'sphinx'
 let g:pydocstring_enable_comment = 0
+
